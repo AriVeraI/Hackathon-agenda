@@ -8,7 +8,7 @@ public class ContactoService {
     private List<Contacto> contactos;
     public int limiteAgenda = 20;
 
-    public ContactoService(List<Contacto> contactos) {
+    public ContactoService() {
         this.contactos = new ArrayList<>();
     }
 
@@ -67,4 +67,17 @@ public class ContactoService {
                 .filter(contacto -> contacto.getNombre().equalsIgnoreCase(nombre))
                 .findFirst();
     }
+
+    //Listar contactos
+    //usando for each
+    public void listarContactos() {
+        if(contactos.isEmpty()){
+            System.out.println("Aún no tienes contactos");
+        }else {
+            for (Contacto contacto : contactos) {
+                System.out.println(contacto);
+            }
+        }
+    }
+
 }
