@@ -1,10 +1,10 @@
 public class Contacto {
     private String nombre;
-    private Integer numero;
+    private String numero;
     private Tipo tipo;
     //constructor
 
-    public Contacto(String nombre, Integer numero, Tipo tipo) {
+    public Contacto(String nombre, String numero, Tipo tipo) {
         this.nombre = nombre;
         this.numero = numero;
         this.tipo = tipo;
@@ -21,11 +21,11 @@ public class Contacto {
         this.nombre = nombre;
     }
 
-    public Integer getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(Integer numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
