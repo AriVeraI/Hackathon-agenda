@@ -1,8 +1,6 @@
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 public class ContactoService {
     private List<Contacto> contactos;
@@ -64,6 +62,7 @@ public class ContactoService {
         if(contactos.isEmpty()){
             System.out.println("Aún no tienes contactos");
         }else {
+            contactos.sort(Comparator.comparing(Contacto::getNombre, String.CASE_INSENSITIVE_ORDER));
             for (Contacto contacto : contactos) {
                 System.out.println(contacto);
             }

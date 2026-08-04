@@ -5,6 +5,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ContactoService servicio = new ContactoService();
         int opcion = 0;
+        String nombre;
+        String numero;
+        Tipo tipo;
 
         // OJO, IMPORTANTE, By el Deivid
         // Ya cree una pequeña lista pueden editarla de ser necesario :)
@@ -15,7 +18,8 @@ public class Main {
             System.out.println("2. Buscar contacto por nombre");
             System.out.println("3. Eliminar contacto por nombre");
             System.out.println("4. Verificar si la agenda está llena");
-            System.out.println("5. Salir");
+            System.out.println("5. Agregar un nuevo contacto");
+            System.out.println("6. Salir");
             System.out.print("Elige una opción: ");
 
             if (scanner.hasNextInt()) {
@@ -56,6 +60,22 @@ public class Main {
                         break;
 
                     case 5:
+                        System.out.println("Introduce los datos de tu nuevo contacto");
+                        System.out.println("Nombre: ");
+                        nombre = scanner.nextLine();
+                        System.out.println("Numero: ");
+                        numero = scanner.nextLine();
+                        System.out.println("Tipo (PERSONAL/EMPRESA): ");
+                        tipo = Tipo.valueOf(scanner.nextLine());
+                        Contacto c = new Contacto();
+                        c.setNombre(nombre);
+                        c.setNumero(numero);
+                        c.setTipo(tipo);
+                        servicio.agregarContacto(c);
+
+                        break;
+
+                    case 6:
                         System.out.println("Saliendo del programa...");
                         break;
 
@@ -67,13 +87,13 @@ public class Main {
                 scanner.next();
             }
 
-        } while (opcion != 5);
+        } while (opcion != 6);
 
 
 
         scanner.close();
     }
-    ContactoService agenda = new ContactoService();
+    //ContactoService agenda = new ContactoService();
 
 //        agenda.agregarContacto(new Contacto("Juan", 123, Tipo.PERSONAL));
 //        agenda.agregarContacto(new Contacto("Maria", 456, Tipo.EMPRESA));
