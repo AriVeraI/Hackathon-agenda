@@ -15,7 +15,7 @@ El sistema cuenta con las siguientes características implementadas según la r�
 - *Capacidad Flexible:* Se puede definir un tamaño máximo personalizado o usar el tamaño por defecto de 10 contactos.
 - *Listado Ordenado:* Muestra los contactos ordenados alfabéticamente.
 
-### 🛠️ Métodos Disponibles
+### Métodos Disponibles
 
 - anadirContacto(Contacto c): Añade un contacto validando espacios disponibles y duplicados.
 - existeContacto(Contacto c): Verifica si un contacto ya pertenece a la agenda.
