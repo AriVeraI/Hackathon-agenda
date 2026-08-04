@@ -14,7 +14,8 @@ public class Main {
             System.out.println("1. Listar contactos");
             System.out.println("2. Buscar contacto por nombre");
             System.out.println("3. Eliminar contacto por nombre");
-            System.out.println("4. Salir");
+            System.out.println("4. Verificar si la agenda está llena");
+            System.out.println("5. Salir");
             System.out.print("Elige una opción: ");
 
             if (scanner.hasNextInt()) {
@@ -51,6 +52,10 @@ public class Main {
                         break;
 
                     case 4:
+                        servicio.agendaLlena();
+                        break;
+
+                    case 5:
                         System.out.println("Saliendo del programa...");
                         break;
 
@@ -62,7 +67,9 @@ public class Main {
                 scanner.next();
             }
 
-        } while (opcion != 4);
+        } while (opcion != 5);
+
+
 
         scanner.close();
     }

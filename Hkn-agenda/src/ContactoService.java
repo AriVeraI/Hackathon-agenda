@@ -43,9 +43,6 @@ public class ContactoService {
         }
     }
 
-    public boolean agendaLlena() {
-        return this.contactos.size() >= limiteAgenda;
-    }
 
     public Optional<Contacto> existeContactoPorTelefono(Integer numero){
         if (numero == null) return Optional.empty();
@@ -117,5 +114,18 @@ public class ContactoService {
             return true; // Se eliminó con éxito
         }
         return false; // No se encontró el contacto
+    }
+
+    /**
+     * Método agendaLlena: Verifica si la agenda alcanzó su capacidad máxima e informa al usuario.
+     */
+    public boolean agendaLlena() {
+        if (this.contactos.size() >= this.limiteAgenda) {
+            System.out.println("⚠️ La agenda está llena (" + this.contactos.size() + "/" + this.limiteAgenda + "). No hay espacio para nuevos contactos.");
+            return true;
+        } else {
+            System.out.println("ℹ️ La agenda aún tiene espacio disponible (" + this.contactos.size() + "/" + this.limiteAgenda + ").");
+            return false;
+        }
     }
 }
