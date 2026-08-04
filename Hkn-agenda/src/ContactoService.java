@@ -18,38 +18,33 @@ public class ContactoService {
             return false;
         }
 
-        if (existeContactoPorTelefono()) {
-            return false;
-            //opcional
-        }
-
-        //validación de que contacto no es vacío
         if (c == null) {
             return false;
         } else {
             // validación de campos
             String nomVal = c.getNombre();
-            String numVal = c.getNumero();
+            String numVal = String.valueOf(c.getNumero());
             Tipo tipoVal = c.getTipo();
 
-            if (!nomVal.isEmpty() && nomVal.length() < 25) { //la longitud del nombre, debe ser menor a 25
-                if (numVal.length() == 10) { // es un numero de exactamente 10 dígitos
+            if (!nomVal.isEmpty() && nomVal.length() < 25) {
+                if (numVal.length() == 10) {
                     if (tipoVal != null) {
                         this.contactos.add(c);
                         return true;
                     } else {
                         return false;
-                        // System.out.println("Ese tipo de contacto no está definido");
                     }
                 } else {
                     return false;
-                    //System.out.println("Verifica el número/número inválido");
                 }
             } else {
                 return false;
-                //System.out.println("Verifica el nombre");
             }
         }
+    }
+
+    public boolean agendaLlena() {
+        return this.contactos.size() >= limiteAgenda;
     }
 
     public Optional<Contacto> existeContactoPorTelefono(Integer numero){
@@ -68,8 +63,6 @@ public class ContactoService {
                 .findFirst();
     }
 
-    //Listar contactos
-    //usando for each
     public void listarContactos() {
         if(contactos.isEmpty()){
             System.out.println("Aún no tienes contactos");
@@ -80,15 +73,12 @@ public class ContactoService {
         }
     }
 
-
-    //Buscar contacto por nombre
-
     public static ArrayList<Contacto> buscarContactosPorNombre(ArrayList<Contacto> listaContactos, String textoBuscado) {
         ArrayList<Contacto> encontrados = new ArrayList<>();
 
         for (Contacto c : listaContactos) {
             if (c.getNombre().toLowerCase().contains(textoBuscado.toLowerCase())) {
-                encontrados.add(c); // Agrega todas las coincidencias a la nueva lista
+                encontrados.add(c);
             }
         }
         return encontrados;
@@ -103,5 +93,29 @@ public class ContactoService {
                 System.out.println("Nombre: " + c.getNombre() + " | Teléfono: " + c.getNumero() + " (" + c.getTipo() + ")");
             }
         }
+    }
+
+    // OJO IMPORTANTE NO TOCAR, GRACIAS :)
+    // Metodos de eliminacion creados by el Deivid ;)
+    // Si tienes dudas prguntame POR FAVOR!!!
+
+    public boolean eliminarContactoPorNombre(String nombre) {
+        Optional<Contacto> contactoEncontrado = existeContactoPorNombre(nombre);
+
+        if (contactoEncontrado.isPresent()) {
+            contactos.remove(contactoEncontrado.get());
+            return true; // Se eliminó con éxito
+        }
+        return false; // No se encontró el contacto
+    }
+
+    public boolean eliminarContactoPorTelefono(Integer numero) {
+        Optional<Contacto> contactoEncontrado = existeContactoPorTelefono(numero);
+
+        if (contactoEncontrado.isPresent()) {
+            contactos.remove(contactoEncontrado.get());
+            return true; // Se eliminó con éxito
+        }
+        return false; // No se encontró el contacto
     }
 }
