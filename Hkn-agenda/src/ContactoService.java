@@ -121,10 +121,10 @@ public class ContactoService {
      */
     public boolean agendaLlena() {
         if (this.contactos.size() >= this.limiteAgenda) {
-            System.out.println("⚠️ La agenda está llena (" + this.contactos.size() + "/" + this.limiteAgenda + "). No hay espacio para nuevos contactos.");
+            System.out.println("La agenda está llena. No hay espacio para nuevos contactos.");
             return true;
         } else {
-            System.out.println("ℹ️ La agenda aún tiene espacio disponible (" + this.contactos.size() + "/" + this.limiteAgenda + ").");
+            System.out.println("La agenda aún tiene espacio disponible.");
             return false;
         }
     }
