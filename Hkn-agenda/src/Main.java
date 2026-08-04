@@ -73,4 +73,12 @@ public class Main {
 
         scanner.close();
     }
+    ContactoService agenda = new ContactoService();
+
+//        agenda.agregarContacto(new Contacto("Juan", 123, Tipo.PERSONAL));
+//        agenda.agregarContacto(new Contacto("Maria", 456, Tipo.EMPRESA));
+
+//        agenda.mostrarEspaciosLibres();
+//
+//    }
 }

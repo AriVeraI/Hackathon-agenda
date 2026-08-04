@@ -7,7 +7,7 @@ import java.util.Optional;
 public class ContactoService {
     private List<Contacto> contactos;
     public int limiteAgenda = 20;
-
+    public int capacidadMaxima = 20;
     public ContactoService() {
         this.contactos = new ArrayList<>();
     }
@@ -127,5 +127,21 @@ public class ContactoService {
             System.out.println("La agenda aún tiene espacio disponible.");
             return false;
         }
+    }
+
+//    public void agregarContacto(Contacto contacto) {
+//        if (contactos.size() < capacidadMaxima) {
+//            contactos.add(contacto);
+//            System.out.println("Contacto agregado.");
+//        } else {
+//            System.out.println("Agenda llena.");
+//        }
+//    }
+    public int espaciosLibres() {
+        return capacidadMaxima - contactos.size();
+    }
+    //aqui se muestran los espacios disponibles
+    public void mostrarEspaciosLibres() {
+        System.out.println("Espacios libres: " + espaciosLibres());
     }
 }
