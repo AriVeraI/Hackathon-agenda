@@ -80,4 +80,28 @@ public class ContactoService {
         }
     }
 
+
+    //Buscar contacto por nombre
+
+    public static ArrayList<Contacto> buscarContactosPorNombre(ArrayList<Contacto> listaContactos, String textoBuscado) {
+        ArrayList<Contacto> encontrados = new ArrayList<>();
+
+        for (Contacto c : listaContactos) {
+            if (c.getNombre().toLowerCase().contains(textoBuscado.toLowerCase())) {
+                encontrados.add(c); // Agrega todas las coincidencias a la nueva lista
+            }
+        }
+        return encontrados;
+    }
+
+    public static void imprimirResultadosBusqueda(ArrayList<Contacto> resultados) {
+        if (resultados.isEmpty()) {
+            System.out.println("No se encontraron contactos coincidentes.");
+        } else {
+            System.out.println("Contactos encontrados: " + resultados.size());
+            for (Contacto c : resultados) {
+                System.out.println("Nombre: " + c.getNombre() + " | Teléfono: " + c.getNumero() + " (" + c.getTipo() + ")");
+            }
+        }
+    }
 }
